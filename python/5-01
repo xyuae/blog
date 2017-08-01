@@ -1,0 +1,27 @@
+CS 688
+Gladimir Baranoski (DC3520)
+Office hour: Friday 3:30 - 4:30 pm
+Teaching Assistant
+Monday: 1:30 - 2:30 pm, MC 3007
+Tuesday, 2-3 pm, MC3007
+
+Software and hardware for interactive computer graphics.
+Implementation of device drivers, 3-D transformations, clipping, perspective, and input routines.
+Data structures, hidden surface removal, colour shading techniques, and some additional topics will be covered.
+
+wrie interactive 3D computer graphics programs;
+undertand how linear and perspective transofrmations are sued in modeling and rendering in3D computer graphics;
+
+OpeanGL Prgamming Guide
+Computer graphics with open GL by Hearn, Baker and Carithers
+
+
+Prereqs: Prerequisite: Graduate Level Plans - All others require permission of department.
+
+Turner Whitted introduces Ray Tracing
+Graphics Pipeline and HardWare
+
+
+CS 350 operating system
+
+transistors/ capacitors => IC/chips -> processor/memory, Networking, I/O devices

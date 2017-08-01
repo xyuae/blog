@@ -1,0 +1,146 @@
+additive increase, multiplicative decrease AIMD
+approach: increase transmission rate, probing for usable bandwidth, until loss occurs
+  additive increase: increase cwnd by 1MSS every RTT until loss detected
+  multiplicative decrease: cut cwnd in half after loss
+
+LastByteSent - LastByetAcked <= cwnd
+1. TCP slow start
+when connection starts, incrase rate exponentially until first loss event
+Discover available bandwidth fast - desirable to quickly ramp up to respectable rate
+
+2. Congestion avoidance phase
+- when cwnd is above a threshold
+- cwnd is incremented by one segment every RTT -> linear incrase
+- cwnd continues to incrase until loss is detected
+- TCP spends most of its time in this phase
+3. Reaction to congestion phase
+At any time, when congestion occurs, decase the window size
+How TCP recognizes congestion? Two congestion indication mechanisms
+1. Three dupliated ACKS
+Duplicate ACKS means the receiver got all packets up to teh gap and is actually receiving packes
+Congestion threshold = cwnd/2
+2. Timeout
+No response from receiver - more likey due to significant congestion -> reduce cwnd aggressively
+- congestion threshold = cwnd/2 and new cwnd = 1 max. Segment size
+- go back to slow start phase
+
+TCP Connection Management
+Recall: TCP sender, receiver establish connection before exchanging data segments
+initialize TCP vairables: seq #s, buffers, flow control infor
+client: connection initiator
+Socket clientSocket = new Socket("hostname", "port number");
+server: contacted by client: Socket connectionSocket = welcomeSocket.accept();
+Three way handshake: Step1: client host sends TCP SYN segment to somerecovery
+Step 2: server host recieves SYN, replies with SYNACK segment: server allocates buffers, specifies server intial seq #
+Step 3: client receives SYNACK, replies with ACK segment, which may contain data
+Connection request, SYN=1, seq = client_isn <= connection granted SYN=1, seq = server_ISN, ack = client_isn + 1, SYNACK,
+SYN flood attack: denial of servie attack(Dos) known as the SYN flood attack.
+The attackers send a large number of TCP syntax
+The attack can be amplified by sending the SYNs from multiple sources, creating a DDoS SYN flood attack\
+An effective defense known as SYN cookies
+When recieivng a SYN segment, the server, instead of allocating resources for this SYN, it creates an TCP sequence number
+
+
+Gist A abd B are cinnybucatubg iver a TCp connection, and Host B has already received from A all bytes up through bypte 248. Suppose A tehn sends two segements to Host B back-to-back. The first and
+second segments contain 40 and 60 bypes of data, respectively. In the first segment, the sequence number is 249, the source port number is 503, the destination port number
+is 80. Host B sends an acknowlegement whenever it recieves a segment from Host A.
+
+Consider the floowing plot of TCP window size as a funciton of time. Assuming Cp Reno is the protocol
+experiencing hte behavior shown below,
+slow start.
+
+A is sending an enormous file to B over a TCP connection. VOer this conneciton there is never any packet loss and the timers never expire.
+Denote the transmission rate of the link connceting A to the Internet by R bps. Suppose that the rpocess in A is capble of sending data into its TCP socket at a rate of Sbps
+where S= 10R. Further supppose that the TCP receiver buffer is large enough to hold the entire file, and the send buffer can hold only one percent of the file. What would prevent the process in Host A from
+continuously passing data to its TCP socket at rate S? TCP flow conrol? TCP congestion control?
+Flow control eliminate overflow of receiver.
+Congestion control is to eliminate the congestion level. affect loss packet event.
+
+5. Consider sending a large file from a host to another over a TCP connection that has no loss
+a) Suppose TCP use AIMD for its congestion control without slow start. Assuming CongWin increases by 1MSS every time a batch of ACKs is recieved and assuming approximatly constant round-trip times, how long does it take for
+CongWin to incrase from 1 MSS to 6 MSS(assuming no loss events)?
+
+
+Linear incrase
+Denote by W the value of w when a loss event occurs. Assuming that RTT and W are
+approximatly constant over the duraiton of the conneciton, the TCP transmission rate ranges from W/2 RTT to W/RTT. These assumptions
+lead to a highly simplifed macrosopci odel for the steady-state behavior of TCP. The network drops a packet from the connecitn when
+the rate incrass to W/RTT, the rate is then cut in half and then incrases by MSS/RTT every RTT until it again reaches W/RTT. average throughput is 0.75 W/RTT
+P6.
+Recall the macrosopic description of TCP trhoughput. In the period of time from when the connection's rate varies from W/2.RTT to W/RTT, only one segment is lost. Show that the loss rate is equal to
+
+In our discussion of TCP congestion control, when TCp remain idel for a relatively long period of time and then want to send more data at t2. Waht are the advantages and dis of having TCp usethe congestion window and threshold vaues from t1
+
+An advantage of using the eralier values of CongWn and Threshold is taht Cp would not have to go through slow start and congestion avoidance to ramp up to the throughput value obtianed at t1. A disadvantage of using these values is taht they may be non longer accurate. In particular, if the path has become more congested between t1 and t2, teh sender will send a large windlow's worth of segments in to a already congested path.
+
+P3.
+Let's consider the question of fairness in TCP with the following model. Let's consider
+the simple case of two TCP connectins sharing a single link with transmission rate . Assume that the two connections have the same MSS and RTT (so that if they have teh same congestion window size then they have the same throughput),
+that they have a large amount data to send and that no other CP connection or UDP datarames traverse this shared link. Ignore the slow-start pahse of TCP and assume the TCP connections are
+
+Suppose that the TCP window sizes are such taht at a given point in time, connections 1 and 2 realize throughputs indicated by point A in Figure 3.55. Because theamount of link bandwidth jointly consumed by the two connecitons is les than R, no loss
+
+Altough a nunber of idealized assumptions lie behind this scenario, it still provides an intuitive feel for why TCP is more fair
+The ratio of the linear decrease on loss between conneciton 1 and connectin 2 is the same - as ratio of the linear increases: unity. In this case, the throughputs never move off of the AB line segment. In fig
+
+
+Application layer
+
+e-mail
+web
+instant messaging
+remote login
+P2P file shairng
+multi-user network games
+
+Creating a network app
+Principles of network applicaiotns
+web and HTTP
+synthesis: a day in the life of a web request
+clients may have dynamic IP address
+
+process: program running within a host
+- within same host, two processes communicate using interprocess communicaiton
+- proceses in different hosts communicate by exchagning messages
+client process: process that initiates communicaiton
+server process: process run on the server
+
+process sends/receives messages to/from its socket = API (app. programming interface)
+to receive messages, process must have identifier
+host device has unique 32-bit ip address
+
+Exchange data with the server
+- read data from the socket
+- write data to the socket
+
+transport service
+Data loss
+Throughput
+Security: encription
+
+App-layer protocol defines
+types of message exchanged between processes - request, response
+public-domain protocols vs. propriety protocals: http vs skype
+
+Web and HTTP
+Web is a cllient-server applicaiotn
+web pages consists of objects: HTML, JPEG, JAva applet, audio file
+web page consists of base html-file which includes serveral referenced objectseach obejct is addressable by a URL
+
+HTTP: hypertext transfer protocol: web's applicaiton layer protocol
+client/server model: srver: web server sends objects in response to reqeusts
+HTTP is stateless, why HTTP is stateless?
+Synthesis: a day in the life of a web request
+
+DHCP: dynamic assigning IP address to devices, provie client IP address, IP address of router, and DNS server
+
+ARP: get mac address of a router given its IP address
+IP datagram forwarded from campus network into comcast network, routed ( tables created by RIP, OSRF, and BGP routing protocols) to DNS server
+
+New office
+EIT 3137
+
+MAC: to reduce the chance of collision in order to improve throughput
+APSTNDP
+network layer (routing), segment => datagram, bell-ford, dijkstra, optimal Algorithms
+Transport layer, Application layer 

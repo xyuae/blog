@@ -1,8 +1,8 @@
-# blog Interview preparation
-[HashMap's implementation](http://yikun.github.io/2015/04/01/Java-HashMap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/)
-[Lifecycle of a Thread](http://www.cnblogs.com/sunddenly/p/4106562.html)
-[A story about thread](http://mp.weixin.qq.com/s?__biz=MjM5NzA1MTcyMA==&mid=403498894&idx=2&sn=219c1a6001b5bb7e6bdc7963b1af8450&scene=2&srcid=0330UDNmQ2GlTOLo1CY8IZfH&from=timeline&isappinstalled=0#wechat_redirect) Very nice to read
-[Cache](http://blog.chinaunix.net/uid-26817832-id-3244916.html)
+# Blog -- Technical Knowledge
+- [HashMap's implementation](http://yikun.github.io/2015/04/01/Java-HashMap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/)
+- [Lifecycle of a Thread](http://www.cnblogs.com/sunddenly/p/4106562.html)
+- [A story about thread](http://mp.weixin.qq.com/s?__biz=MjM5NzA1MTcyMA==&mid=403498894&idx=2&sn=219c1a6001b5bb7e6bdc7963b1af8450&scene=2&srcid=0330UDNmQ2GlTOLo1CY8IZfH&from=timeline&isappinstalled=0#wechat_redirect) Very nice to read
+- [Cache](http://blog.chinaunix.net/uid-26817832-id-3244916.html)
 
 
 ## Note
