@@ -6,8 +6,8 @@ import java.util.List;
  */
 public class MovieLister {
     private MovieFinder finder;
-    public MovieLister() {
-        finder = new ColonDelimitedMovieFinder("movies1.txt");
+    public MovieLister(MovieFinder finder) {
+        this.finder = finder;
     }
     public Movie[] moviesDirectedBy(String arg) {
         List allMovies = finder.findAll();

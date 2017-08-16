@@ -1,0 +1,2 @@
+We can just add a card to the end of the ArrayList with add(), as opposed to making our own variable to keep track of what index we're on.
+cards.size() automatically keeps track of how many cards are left in the array. 

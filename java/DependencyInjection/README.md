@@ -85,3 +85,54 @@ Early user interface were controlled by the application program. You would have 
 fields on the screen. The main control of the program was inverted, moved away from you to the framework.
 
 For this new breed of containers the inversion is about how they lookup a plugin implementation. 
+In my naive example the lister looked up the finder implementation by directly instantiating it.
+This stops the finder from being a plugin. The approach that these containers use is to ensure that any user of a plugin follows
+some convention that allows a separate assembler module to inject the implementation into the lister.
+
+As a result I think we need a more specific name for this pattern. Inversion of Control 
+is too generic a term, and thus people find it confusing. As a result with a lot of discussion
+with various IoC advocates we settled on the name Dependency Injection.
+
+I am going to start by talking about the various forms of dependency injection, but I'll
+point out now that that's not the only way of removing the dependency from the application 
+class to the plugin implementation. The other pattern you can use to do this is Service Locator.
+
+## Forms of Dependency Injection
+The basic idea of the Dependency injection is to have a separate object, an assembler,
+that populates a field in the lister class with an appropriate implementation for the finder
+interface, resulting in a dependency diagram along the lines of Figure 2.
+There are three main styles of dependency injection. The names I am using for them
+are Constructor Injection, Setter Injection, and interface injection. If you read
+about this stuff in the current discussions about Inversion of Control you will hear 
+these referred to as type 1 IoC (interface injection), type 2 IoC (setter injection) and
+type 3 IoC (constructor injection). I find numeric names rather hard to remember, which is why
+I've used the names I have here.
+
+## Constructor Injection with PicoContainer
+I will start with showing how this injection is done using a lightweight container called PioContainer.
+I am starting here primarily because several of my colleagues at ThoughtWorks are very 
+active in the developement of PicoContainer.
+
+PicoContainer uses a constructor to decide how to inject a finder implementation 
+into the lister class. For this to work, the movie lister class needs to declare a 
+constructor that includes everything it needs injected.
+```aidl
+public MovieLister(MovieFinder finder) {
+        this.finder = finder;
+    }
+```
+The finder itself will also be manged by the pico container, and as such will have the 
+filename of the text file injected into it by the container.
+```aidl
+public class ColonMovieFinder {
+    String filename;
+    public ColonMovieFinder(String filename){
+        this.filename = filename;
+    }
+}
+```
+The pico container then needs to be told which implementation class
+to associate with each interface, and which string to inject into the finder.
+private MutablePicoContainer configureContainer() {
+
+
