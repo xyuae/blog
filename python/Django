@@ -1,0 +1,22 @@
+## Introd to Testing in Djangos
+Types of tests
+Unit and itegration are the two main types of tests
+- Unit tests are isolated tets that test one specific function
+- Integration tests, meanwhile, are larger tests that focus on user behavior and testing entire applications.
+Focus on unit tests. That said, integration tests are sometimes still necessary even if you have coverage with unit tests, since integration tests can help catch code regressions.
+In general, tests result in either a Success, Failure or an error. You not only need to tests for expected results, but also how well your code handles unexpected results.
+
+## Best practices
+- If it can break, it should be tested. This includes models, views, forms, templates, validators, and so forth.
+- Each test should generally only test one function
+- Keep it simple. You do not want to have to write tests on top of other tests.
+- Run tests whenever code is PULLED or PUSHed from the repo and in the staging environment befor PUSHing to production.
+- When upgrading to a newer version of Django:
+  - upgrade locally
+  - run your test suite
+  - fix bugs
+  - PUSH to the repo and staging, and then
+  - test again in staging before shipping the code
+
+## Structure
+Structure your tests to fit your project. I tend to favor putting all tests for each app in the tests.py and grouping tests by what i am testing
